@@ -1,11 +1,36 @@
-import React from 'react'
+import MaxWidthWrapper from "@/app/components/defaults/MaxWidthWrapper";
+import { TableCustom } from "@/app/components/TableCustom";
+import TableHeading from "@/app/components/TableHeading";
+import React from "react";
+import { sessionColumns } from "./columns";
+import { BASE_URL } from "@/app/constants";
 
-const page = () => {
+// const sessionData: any[] = [
+//   {
+//     subject: "Therapy Session",
+//     date: "2024-09-20",
+//     time: "12:00 PM",
+//     patient: "John Doe",
+//     status: "Ongoing",
+//   },
+//   {
+//     subject: "Consultation",
+//     date: "2024-09-22",
+//     time: "01:00 PM",
+//     patient: "Jane Smith",
+//     status: "Pending",
+//   },
+// ];
+
+const MySessionsPage = async () => {
+  const sessionData = await fetch(`${BASE_URL}/sessions`);
+
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <MaxWidthWrapper>
+      <TableHeading paragraph="افحص وراجع اخر الجلسات التي قمت بها مع المرضى" title="جلساتي" />
+      <TableCustom columns={sessionColumns} data={sessionData} />
+    </MaxWidthWrapper>
+  );
+};
 
-export default page
+export default MySessionsPage;

@@ -3,6 +3,7 @@ import { TableCustom } from "@/app/components/TableCustom";
 import React from "react";
 import { appointmentColumns } from "./columns";
 import TableHeading from "@/app/components/TableHeading";
+import { BASE_URL } from "@/app/constants";
 
 const appointmentData: any[] = [
   {
@@ -22,7 +23,8 @@ const appointmentData: any[] = [
   },
 ];
 
-const MyAppointmentsPage = ({ params }: { params: { id: string } }) => {
+const MyAppointmentsPage = async ({ params }: { params: { id: string } }) => {
+   const res = await fetch(`${BASE_URL}/books`);
   return (
     <MaxWidthWrapper>
       <TableHeading

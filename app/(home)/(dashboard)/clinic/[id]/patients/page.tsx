@@ -18,7 +18,9 @@ const patientData: any[] = [
   },
 ];
 
-const MyPatientsPage = () => {
+const MyPatientsPage = async() => {
+  const sessionData = await fetch(`${BASE_URL}/patients`);
+
   return (
     <MaxWidthWrapper>
       <TableHeading
